@@ -1,14 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 html,
 body {
@@ -17,11 +14,11 @@ body {
 }
 
 body {
-  color: var(--foreground);
+  font-size: 16px;
+  line-height: 1;
+  color: #050505;
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-franklin-gothic-book);
 }
 
 * {
@@ -35,8 +32,7 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.adminBg {
+  background-color: black;
 }
+
