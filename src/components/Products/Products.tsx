@@ -1,9 +1,27 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import ProductCard from '@components/components/Products/ProductCard';
 import { IProduct } from '@components/types/IProduct';
 
 const Products = ({ products }: { products: IProduct[] }) => {
+  const [filetredProducts, setFiletredProducts] = useState<IProduct[]>(
+    products ?? []
+  );
+  const [searchVal, setSearchVal] = useState('');
+
+  useEffect(() => {
+    if (searchVal && searchVal.length >= 2) {
+      const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(searchVal.toLowerCase())
+      );
+      setFiletredProducts(filteredProducts);
+    } else {
+      setFiletredProducts(products);
+    }
+  }, [searchVal]);
+
   return (
     <div className={'px-7 py-5 flex flex-col gap-6'} id={'shop'}>
       <div className={'flex justify-between items-center'}>
@@ -14,11 +32,13 @@ const Products = ({ products }: { products: IProduct[] }) => {
             type="text"
             placeholder="Знайди свій смак..."
             className="w-full bg-transparent outline-none text-sm text-gray-700 placeholder-gray-500"
+            value={searchVal}
+            onChange={(e) => setSearchVal(e.target.value)}
           />
         </div>
       </div>
       <div className={'grid grid-cols-3 gap-4'}>
-        {products.map((product) => (
+        {filetredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import type { Metadata } from 'next';
 import '../globals.css';
 import ProtectedRoute from '@components/routes/ProtectedRoute';
+import Sidebar from '@components/components/admin/Sidebar';
 const franklinGothicBook = localFont({
   src: '../fonts/FranklinGothic-Book.woff2',
   weight: '400',
@@ -33,7 +34,16 @@ export default function AdminLayout({
       >
         <AuthProvider>
           <ProtectedRoute>
-            <main>{children}</main>
+            <main className={'w-full p-8 h-[100vh]'}>
+              <div
+                className={
+                  'w-full min-h-[100vh] rounded-xl bg-white text-black flex '
+                }
+              >
+                <Sidebar />
+                {children}
+              </div>
+            </main>
           </ProtectedRoute>
         </AuthProvider>
       </body>

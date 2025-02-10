@@ -5,12 +5,18 @@ import Image from 'next/image';
 import { IProduct } from '@components/types/IProduct';
 import { useProductsCart } from '@components/store/useProductsCart';
 
-const ProductCard = ({ product }: { product: IProduct }) => {
-  const { id, name, options, composition, taste, roasting } = product;
+const ProductCard = ({
+  product,
+  isDisable,
+}: {
+  isDisable?: boolean;
+  product: IProduct;
+}) => {
+  const { id, name, options, composition, taste, roasting, image } = product;
   const addProduct = useProductsCart((state) => state.addProduct);
   const [isHovered, setIsHovered] = useState(false);
-  const [quantities, setQuantities] = useState<{ [key: string]: number }>(
-    Object.keys(options).reduce((acc, key) => ({ ...acc, [key]: 0 }), {})
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>(() =>
+    Object.fromEntries(Object.keys(options || {}).map((key) => [key, 0]))
   );
 
   const handleQuantityChange = (weight: string, quantity: number) => {
@@ -43,7 +49,12 @@ const ProductCard = ({ product }: { product: IProduct }) => {
             ' flex flex-col gap-2 w-[200px] h-[285px] relative overflow-hidden'
           }
         >
-          <Image src="/photo.jpg" alt="Coffee Bag" width={200} height={250} />
+          <Image
+            src={image ?? '/placeholder.jpg'}
+            alt="Coffee Bag"
+            width={200}
+            height={250}
+          />
           <div
             className={`text-left absolute flex flex-col items-center justify-center p-3 gap-2 w-[200px] h-[285px] bg-black bg-opacity-85 text-white
           transform transition-transform duration-700  ${isHovered ? 'translate-y-0 opacity-1' : 'translate-y-full opacity-0'}`}
@@ -104,8 +115,9 @@ const ProductCard = ({ product }: { product: IProduct }) => {
         ))}
       </div>
       <button
+        disabled={isDisable}
         onClick={handleAddToCart}
-        className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-400"
+        className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-400 disabled:opacity-50 disabled:pointer-events-none"
       >
         Додати до кошика
       </button>

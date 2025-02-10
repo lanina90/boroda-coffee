@@ -11,8 +11,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={'adminBg'}>
-        <main>{children}</main>
+      <body className={'adminBg '}>
+        <main className="h-[100vh] w-full flex items-center justify-center">
+          {children}
+        </main>
       </body>
     </html>
   );

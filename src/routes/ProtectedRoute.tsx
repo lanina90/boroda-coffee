@@ -13,10 +13,13 @@ export default function ProtectedRoute({
   const router = useRouter();
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/admin//login');
+    if (
+      status !== 'loading' &&
+      (status === 'unauthenticated' || !session?.user)
+    ) {
+      router.push('/login');
     }
-  }, [status, router]);
+  }, [status, session, router]);
 
   if (status === 'loading') return <p>Loading...</p>;
   if (!session) return null;

@@ -4,6 +4,6 @@ export interface IProduct {
   roasting: string;
   taste: string;
   options: Record<string, number>;
-  image?: string;
+  image?: string | null;
   composition: string;
 }

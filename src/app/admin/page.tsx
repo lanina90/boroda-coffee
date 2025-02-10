@@ -1,3 +1,3 @@
 export default function AdminPage() {
-  return <>AdminPage</>;
+  return <div className={'w-full h-full '}>AdminPage</div>;
 }
