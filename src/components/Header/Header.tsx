@@ -8,13 +8,18 @@ import { IoMdClose } from 'react-icons/io';
 import { usePathname } from 'next/navigation';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { navMenuLinks } from '@components/constants/constants';
+import { useProductsCart } from '@components/store/useProductsCart';
+import Cart from '@components/components/Cart/Cart';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
   const pathname = usePathname();
+  const productCart = useProductsCart((state) => state.productsCart);
+
   return (
     <>
-      <header className="fixed top-0 w-full bg-black text-white">
+      <header className="fixed top-0 w-full bg-black text-white z-50">
         <Container>
           <div className="flex items-center justify-between px-7 py-4">
             <div className="md:hidden cursor-pointer">
@@ -33,10 +38,13 @@ const Header = () => {
                   +380979245565
                 </span>
               </Link>
-              <div className="relative w-8 h-9 flex items-center justify-between">
+              <div
+                className="relative w-8 h-9 flex items-center justify-between cursor-pointer"
+                onClick={() => setCartOpen(!cartOpen)}
+              >
                 <BsCart2 size={26} />
                 <div className="absolute top-0 right-0 w-4 h-4 rounded-full flex justify-center items-center bg-white text-yellow-600 font-bold text-xs leading-none">
-                  2
+                  {productCart.length ?? 0}
                 </div>
               </div>
             </div>
@@ -68,6 +76,7 @@ const Header = () => {
             ))}
           </nav>
         </div>
+        {cartOpen && <Cart onCartClose={() => setCartOpen(!cartOpen)} />}
       </header>
     </>
   );

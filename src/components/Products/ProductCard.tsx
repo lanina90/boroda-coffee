@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { IProduct } from '@components/types/IProduct';
 import { useProductsCart } from '@components/store/useProductsCart';
@@ -15,9 +15,15 @@ const ProductCard = ({
   const { id, name, options, composition, taste, roasting, image } = product;
   const addProduct = useProductsCart((state) => state.addProduct);
   const [isHovered, setIsHovered] = useState(false);
-  const [quantities, setQuantities] = useState<{ [key: string]: number }>(() =>
-    Object.fromEntries(Object.keys(options || {}).map((key) => [key, 0]))
-  );
+  const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
+
+  useEffect(() => {
+    if (options && Object.keys(options).length > 0) {
+      setQuantities(
+        Object.fromEntries(Object.keys(options).map((key) => [key, 0]))
+      );
+    }
+  }, [options]);
 
   const handleQuantityChange = (weight: string, quantity: number) => {
     setQuantities((prev) => ({ ...prev, [weight]: quantity }));
@@ -32,6 +38,7 @@ const ProductCard = ({
           weight,
           price: options[weight],
           quantity,
+          image,
         });
       }
     });

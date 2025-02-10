@@ -7,7 +7,13 @@ import { useRouter } from 'next/navigation';
 
 import { IProduct } from '@components/types/IProduct';
 
-const ProductsList = ({ products }: { products: IProduct[] }) => {
+const ProductsList = ({
+  products,
+  onProductDelete,
+}: {
+  products: IProduct[];
+  onProductDelete: (id: string) => Promise<void>;
+}) => {
   const router = useRouter();
   return (
     <>
@@ -35,7 +41,11 @@ const ProductsList = ({ products }: { products: IProduct[] }) => {
               className={'cursor-pointer'}
               onClick={() => router.push(`/admin/products/${product.id}`)}
             />
-            <MdDeleteOutline size={20} className={'cursor-pointer'} />
+            <MdDeleteOutline
+              size={20}
+              className={'cursor-pointer'}
+              onClick={() => onProductDelete(product.id)}
+            />
           </div>
         </div>
       ))}
