@@ -5,7 +5,7 @@ import ProductsListClient from '@components/pages/admin/ProductsListClient';
 const Page = async () => {
   const products = await fetchProducts();
 
-  return <ProductsListClient products={products} />;
+  return <ProductsListClient products={products ?? []} />;
 };
 
 export default Page;

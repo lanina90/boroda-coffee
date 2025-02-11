@@ -1,11 +1,10 @@
-import NextAuth, { NextAuthOptions, Session } from 'next-auth';
+import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { adminAuth } from '@components/lib/firebaseAdmin';
 import { auth } from '@components/lib/firebase';
-import { JWT } from 'next-auth/jwt';
 
-export const authOptions: NextAuthOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: 'Firebase',
@@ -28,7 +27,7 @@ export const authOptions: NextAuthOptions = {
           return {
             id: decodedToken.uid,
             email: decodedToken.email,
-            name: decodedToken.name,
+            name: decodedToken.name ?? '',
           };
         } catch (error) {
           console.error('Login error:', error);
@@ -38,19 +37,18 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }: { session: Session; token: JWT }) {
+    async session({ session, token }) {
       if (token.sub) {
         session.user = {
           ...session.user,
-          email: token.email as string,
-          name: token.name as string,
+          email: token.email ?? '',
+          name: token.name ?? '',
         };
       }
       return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
-};
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

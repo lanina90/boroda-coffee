@@ -28,7 +28,9 @@ const ProductsListClient = ({ products }: { products: IProduct[] }) => {
       }
     }
   };
-
+  if (!products || products.length === 0) {
+    return <p className="text-center text-gray-500">Немає доступних товарів</p>;
+  }
   return (
     <div className={'p-5 flex flex-col gap-2 w-full max-w-screen-lg'}>
       <ProductsListHeadig

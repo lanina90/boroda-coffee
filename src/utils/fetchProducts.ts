@@ -1,24 +1,31 @@
-import { collection, getDocs } from '@firebase/firestore';
-import { db } from '@components/lib/firebase';
 import { IProduct } from '@components/types/IProduct';
+import { firestore } from '@components/lib/firebaseAdmin';
 
 export const fetchProducts = async () => {
-  const productsCollection = collection(db, 'products');
-  const productSnapshot = await getDocs(productsCollection);
+  try {
+    console.log('📡 Отримуємо продукти з Firestore через Admin SDK...');
 
-  const products: IProduct[] = productSnapshot.docs.map((doc) => {
-    const data = doc.data();
+    const productsCollection = firestore.collection('products');
+    const snapshot = await productsCollection.get();
 
-    return {
+    if (snapshot.empty) {
+      console.warn('⚠️ Немає товарів у Firestore!');
+      return [];
+    }
+
+    const products: IProduct[] = snapshot.docs.map((doc) => ({
       id: doc.id,
-      name: data.name || '',
-      roasting: data.roasting || '',
-      taste: data.taste || '',
-      options: data.options || '',
-      image: data.image || '',
-      composition: data.composition || '',
-    };
-  });
+      name: doc.data().name || '',
+      roasting: doc.data().roasting || '',
+      taste: doc.data().taste || '',
+      options: doc.data().options || {},
+      image: doc.data().image || '',
+      composition: doc.data().composition || '',
+    }));
 
-  return products;
+    return products;
+  } catch (error) {
+    console.error('❌ Помилка при отриманні продуктів через Admin SDK:', error);
+    return [];
+  }
 };

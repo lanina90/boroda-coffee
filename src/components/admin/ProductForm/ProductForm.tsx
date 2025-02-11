@@ -8,6 +8,7 @@ import CustomInput from '@components/components/admin/ProductForm/CustomInput';
 import VariationsInput from '@components/components/admin/ProductForm/VariationsInput';
 import ProductCard from '@components/components/Products/ProductCard';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 interface FormData {
   name: string;
@@ -188,7 +189,7 @@ const ProductForm = ({ id }: { id?: string }) => {
             onChange={handleFileChange}
             className="w-full p-2 border rounded"
           />
-          <img
+          <Image
             src={previewImage || formData.image || '/placeholder.jpg'}
             alt="Product"
             width={200}
