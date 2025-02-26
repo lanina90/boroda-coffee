@@ -10,12 +10,14 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { navMenuLinks } from '@components/constants/constants';
 import { useProductsCart } from '@components/store/useProductsCart';
 import Cart from '@components/components/Cart/Cart';
+import OrderModal from '@components/components/OrderModal';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const pathname = usePathname();
   const productCart = useProductsCart((state) => state.productsCart);
+  const [isOrderModal, setIsOrderModal] = useState(false);
 
   return (
     <>
@@ -76,8 +78,14 @@ const Header = () => {
             ))}
           </nav>
         </div>
-        {cartOpen && <Cart onCartClose={() => setCartOpen(!cartOpen)} />}
+        {cartOpen && (
+          <Cart
+            onCartClose={() => setCartOpen(!cartOpen)}
+            onSubmit={() => setIsOrderModal(true)}
+          />
+        )}
       </header>
+      {isOrderModal && <OrderModal onClose={() => setIsOrderModal(false)} />}
     </>
   );
 };

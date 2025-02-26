@@ -1,17 +1,9 @@
 import { create } from 'zustand/react';
-
-interface Product {
-  id: string;
-  name: string;
-  weight: string;
-  price: number;
-  quantity: number;
-  image?: string | null;
-}
+import { IOrderProduct } from '@components/types/IOrderProduct';
 
 interface CartState {
-  productsCart: Product[];
-  addProduct: (product: Product) => void;
+  productsCart: IOrderProduct[];
+  addProduct: (product: IOrderProduct) => void;
   removeProduct: (id: string, weight: string) => void;
   increaseQuantity: (id: string, weight: string) => void;
   decreaseQuantity: (id: string, weight: string) => void;
