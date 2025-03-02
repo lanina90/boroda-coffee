@@ -18,7 +18,7 @@ const Cart = ({
     <>
       <div
         className={
-          'absolute w-full max-w-xl top-0 right-0 h-[100vh] bg-white text-black rounded-l-2xl p-4 flex flex-col gap-3'
+          'absolute w-full max-w-xl top-0 right-0 h-[100vh] bg-white text-black rounded-l-2xl p-4 flex flex-col gap-3 z-50'
         }
       >
         <div className={'flex justify-between items-center'}>
