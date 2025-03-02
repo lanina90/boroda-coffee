@@ -14,13 +14,14 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { IAnnouncement } from '@components/types/IAnnouncement';
 
-const Hero = () => {
+const Hero = ({ announcements }: { announcements: IAnnouncement[] }) => {
   const pathname = usePathname();
 
   return (
-    <div className={'bg-black text-white flex-col mt-[70px]'}>
-      <TopBar />
+    <div className={'bg-black text-white flex-col mt-[74px]'}>
+      <TopBar announcements={announcements} />
       <div className={'flex flex-col justify-between h-[85vh] max-h-[600px]'}>
         <Swiper
           modules={[Pagination, Scrollbar, A11y]}

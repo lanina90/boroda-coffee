@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 import Hero from '@components/components/Hero/Hero';
 import Footer from '@components/components/Footer/Footer';
 import FloatingContacts from '@components/components/FloatingContacts/FloatingContacts';
+import { fetchAnnouncements } from '@components/utils/fetchAnnouncements';
 
 const franklinGothicBook = localFont({
   src: '../fonts/FranklinGothic-Book.woff2',
@@ -25,11 +26,13 @@ export const metadata: Metadata = {
   description: 'Boroda Drink - Добра Кава',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const announcements = await fetchAnnouncements();
+
   return (
     <html lang="uk">
       <body
@@ -37,7 +40,7 @@ export default function RootLayout({
       >
         <Header />
         <main>
-          <Hero />
+          <Hero announcements={announcements} />
           {children}
           <Footer />
           <FloatingContacts />

@@ -24,6 +24,14 @@ const Sidebar = () => {
       >
         Ассортимент
       </Link>
+      <Link
+        href="/admin/announcements"
+        className={
+          'border border-black rounded-xl w-full shadow-2xl px-3 py-2 hover:bg-black hover:text-white'
+        }
+      >
+        Оголошення та акції
+      </Link>
     </div>
   );
 };

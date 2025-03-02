@@ -3,13 +3,10 @@ import { firestore } from '@components/lib/firebaseAdmin';
 
 export const fetchProducts = async () => {
   try {
-    console.log('📡 Отримуємо продукти з Firestore через Admin SDK...');
-
     const productsCollection = firestore.collection('products');
     const snapshot = await productsCollection.get();
 
     if (snapshot.empty) {
-      console.warn('⚠️ Немає товарів у Firestore!');
       return [];
     }
 
@@ -24,8 +21,7 @@ export const fetchProducts = async () => {
     }));
 
     return products;
-  } catch (error) {
-    console.error('❌ Помилка при отриманні продуктів через Admin SDK:', error);
+  } catch {
     return [];
   }
 };
