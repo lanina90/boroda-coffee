@@ -7,7 +7,7 @@ import { navMenuLinks } from '@components/constants/constants';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { IoMdArrowDropdown } from 'react-icons/io';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
 import 'swiper/css';
@@ -23,11 +23,15 @@ const Hero = () => {
       <TopBar />
       <div className={'flex flex-col justify-between h-[85vh] max-h-[600px]'}>
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          modules={[Pagination, Scrollbar, A11y]}
           spaceBetween={0}
           slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
+          pagination={{
+            clickable: true,
+            renderBullet: (index, className) => `
+      <span class="${className}" style="background-color: white; width: 10px; height: 10px;"></span>
+    `,
+          }}
           scrollbar={{ draggable: true }}
           className={'h-full w-full max-w-[1280px] mx-7'}
         >

@@ -30,14 +30,14 @@ const Header = () => {
             <div>Boroda Drink Logo</div>
             <div className={'flex items-center gap-4'}>
               <Link
-                href="tel:+380979245565"
+                href="tel:+380673860038"
                 className={
                   'flex items-center gap-3 bg-[#e7a727] px-4 py-3 rounded-xl'
                 }
               >
                 <FaPhoneAlt size={18} />{' '}
                 <span className={'hidden md:flex text-white'}>
-                  +380979245565
+                  +380673860038
                 </span>
               </Link>
               <div

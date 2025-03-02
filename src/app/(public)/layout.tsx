@@ -3,6 +3,8 @@ import '../globals.css';
 import Header from '@components/components/Header/Header';
 import localFont from 'next/font/local';
 import Hero from '@components/components/Hero/Hero';
+import Footer from '@components/components/Footer/Footer';
+import FloatingContacts from '@components/components/FloatingContacts/FloatingContacts';
 
 const franklinGothicBook = localFont({
   src: '../fonts/FranklinGothic-Book.woff2',
@@ -37,6 +39,8 @@ export default function RootLayout({
         <main>
           <Hero />
           {children}
+          <Footer />
+          <FloatingContacts />
         </main>
       </body>
     </html>
