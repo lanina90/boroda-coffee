@@ -5,6 +5,7 @@ import AboutCoffee from '@components/components/AboutCoffee/AboutCoffee';
 import CoffeeBrewing from '@components/components/CoffeeBrewing/CoffeeBrewing';
 import CoffeeStorage from '@components/components/CoffeeStorage/CoffeeStorage';
 import CustomerInfo from '@components/components/CustomerInfo/CustomerInfo';
+import Cooperation from '@components/components/Cooperation/Cooperation';
 
 export default async function Home() {
   const products = await fetchProducts();
@@ -16,6 +17,7 @@ export default async function Home() {
       <CoffeeBrewing />
       <CoffeeStorage />
       <CustomerInfo />
+      <Cooperation />
     </Container>
   );
 }
