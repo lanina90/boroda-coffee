@@ -20,7 +20,7 @@ const Hero = ({ announcements }: { announcements: IAnnouncement[] }) => {
   const pathname = usePathname();
 
   return (
-    <div className={'bg-black text-white flex-col mt-[74px]'}>
+    <div className={'bg-black text-white flex-col mt-[74px] md:mt-[85px]'}>
       <TopBar announcements={announcements} />
       <div className={'flex flex-col justify-between h-[85vh] max-h-[600px]'}>
         <Swiper

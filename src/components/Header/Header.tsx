@@ -11,6 +11,7 @@ import { navMenuLinks } from '@components/constants/constants';
 import { useProductsCart } from '@components/store/useProductsCart';
 import Cart from '@components/components/Cart/Cart';
 import OrderModal from '@components/components/OrderModal';
+import Logo from '@components/components/Logo/Logo';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,18 +28,18 @@ const Header = () => {
             <div className="md:hidden cursor-pointer">
               <GiHamburgerMenu size={28} onClick={() => setIsOpen(!isOpen)} />
             </div>
-            <div>Boroda Drink Logo</div>
+            <div className={'w-28 md:w-36 h-auto'}>
+              <Logo />
+            </div>
             <div className={'flex items-center gap-4'}>
               <Link
                 href="tel:+380673860038"
                 className={
-                  'flex items-center gap-3 bg-[#e7a727] px-4 py-3 rounded-xl'
+                  'hidden md:flex items-center gap-3 bg-[#e7a727] px-4 py-3 rounded-xl '
                 }
               >
-                <FaPhoneAlt size={18} />{' '}
-                <span className={'hidden md:flex text-white'}>
-                  +380673860038
-                </span>
+                <FaPhoneAlt size={18} />
+                <span className={' text-white'}>+380673860038</span>
               </Link>
               <div
                 className="relative w-8 h-9 flex items-center justify-between cursor-pointer"
