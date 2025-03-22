@@ -15,7 +15,7 @@ const FloatingContacts = () => {
     },
     {
       icon: <FaInstagram className="text-white text-xl" />,
-      link: '#',
+      link: 'https://www.instagram.com/boroda.drink/profilecard/?igsh=aXdxcGoxdDNzdGNl',
       bg: 'bg-pink-500',
     },
   ];

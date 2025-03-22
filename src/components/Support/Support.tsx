@@ -19,7 +19,7 @@ const contacts = [
   {
     icon: <FaInstagram className="text-pink-500 text-4xl" />,
     title: 'Instagram',
-    link: '#',
+    link: 'https://www.instagram.com/boroda.drink/profilecard/?igsh=aXdxcGoxdDNzdGNl',
     text: 'Instagram',
   },
 ];
