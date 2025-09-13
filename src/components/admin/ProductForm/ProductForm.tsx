@@ -99,15 +99,23 @@ const ProductForm = ({ id }: { id?: string }) => {
 
       if (file) {
         imageUrl = await uploadToCloudinary(file);
+        console.log('imageUrl resp', imageUrl);
       }
 
       const product = { ...formData, image: imageUrl };
+      console.log('product', product);
 
       if (id) {
         const docRef = doc(db, 'products', id);
-        await updateDoc(docRef, product);
+        const updateDocresp = await updateDoc(docRef, product);
+
+        console.log('updateDocresp', updateDocresp);
+
       } else {
         await addDoc(collection(db, 'products'), product);
+
+        const addDocresp = await addDoc(collection(db, 'products'), product);
+        console.log('addDocresp', addDocresp);
       }
 
       alert(`Успіх! Йдемо зараз на сторінку дашборду!`);
