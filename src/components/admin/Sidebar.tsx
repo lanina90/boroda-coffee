@@ -1,7 +1,21 @@
+'use client'
+
 import React from 'react';
 import Link from 'next/link';
+import { signOut  } from 'firebase/auth';
+import { signOut as nextAuthSignOut } from 'next-auth/react';
+import { auth } from '@components/lib/firebase';
 
 const Sidebar = () => {
+
+  async function handleLogout() {
+    try {
+      await signOut(auth);
+    } catch {
+    }
+    await nextAuthSignOut({ callbackUrl: '/login' });
+  }
+
   return (
     <div
       className={
@@ -32,6 +46,7 @@ const Sidebar = () => {
       >
         Оголошення та акції
       </Link>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
