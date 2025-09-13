@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductForm from '@components/components/admin/ProductForm/ProductForm';
+export const revalidate = 0;
 
 export default async function Page({
   params,

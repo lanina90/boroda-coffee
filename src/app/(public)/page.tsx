@@ -6,6 +6,7 @@ import CoffeeBrewing from '@components/components/CoffeeBrewing/CoffeeBrewing';
 import CoffeeStorage from '@components/components/CoffeeStorage/CoffeeStorage';
 import CustomerInfo from '@components/components/CustomerInfo/CustomerInfo';
 import Cooperation from '@components/components/Cooperation/Cooperation';
+export const revalidate = 0;
 
 export default async function Home() {
   const products = await fetchProducts();
