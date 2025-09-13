@@ -19,7 +19,7 @@ export const fetchProducts = async () => {
       image: doc.data().image || '',
       composition: doc.data().composition || '',
     }));
-
+    console.log(products);
     return products;
   } catch {
     return [];
