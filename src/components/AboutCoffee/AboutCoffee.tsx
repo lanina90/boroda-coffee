@@ -32,7 +32,7 @@ const AboutCoffee = () => {
             transition={{ duration: 0.8 }}
             className="bg-neutral-800 rounded-2xl p-8 shadow-lg"
           >
-            <h3 className="text-amber-400 text-2xl font-semibold mb-4">Що ми пропонуємо:</h3>
+            <h3 className="text-amber-400 text-2xl font-semibold mb-4 uppercase">Що ми пропонуємо:</h3>
             <ul className={'list-disc list-inside text-lg leading-relaxed text-neutral-300'}>
               <li>Оберемо разом з вами найкращій варіант кави, враховуючи ваші смаки і вподобання</li>
               <li>Пропонуємо зернову й мелену каву, авторські суміші</li>

@@ -10,7 +10,7 @@ const CustomerInfo = () => {
     <section className="py-20 px-6 md:px-16 bg-gradient-to-r from-neutral-900 to-black ">
       <Container>
         <div className="max-w-5xl mx-auto text-center text-md leading-5">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-amber-500">Способи доставки і оплати</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-amber-500 uppercase">Способи доставки і оплати</h2>
           <div className="grid md:grid-cols-2 gap-10 text-left ">
             <div className="bg-neutral-800 p-6 rounded-xl shadow-lg">
               <h3 className="text-xl font-semibold mb-4 text-amber-400">Нова пошта та Укрпошта</h3>
