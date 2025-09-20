@@ -16,6 +16,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { IAnnouncement } from '@components/types/IAnnouncement';
 
+const heroImgs = [
+  { url: '/dobra-kava.png', alt: 'Dobra kava' },
+  { url: '/kava-dlia-rankiv.png', alt: 'Kava Dlia Rankiv' },
+  { url: "/coffee.png", alt: 'Kava' },
+];
+
 const Hero = ({ announcements }: { announcements: IAnnouncement[] }) => {
   const pathname = usePathname();
 
@@ -36,26 +42,18 @@ const Hero = ({ announcements }: { announcements: IAnnouncement[] }) => {
           scrollbar={{ draggable: true }}
           className={'h-full w-full max-w-[1280px] mx-7'}
         >
-          <SwiperSlide className={'w-full h-full'}>
-            <div className="relative h-full w-full">
-              <Image
-                src={'/dobra-kava.png'}
-                alt={'dobra-kava'}
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'left' }}
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className={'w-full h-full'}>
-            <div className="relative h-full w-full">
-              <Image
-                src={'/kava-dlia-rankiv.png'}
-                alt={'dobra-kava'}
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'left' }}
-              />
-            </div>
-          </SwiperSlide>
+          {heroImgs.map(({url, alt}, i) => (
+            <SwiperSlide className={'w-full h-full'} key={i}>
+              <div className="relative h-full w-full">
+                <Image
+                  src={url}
+                  alt={alt}
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'left' }}
+                />
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         <div className={'hidden md:block w-full bg-black'}>
