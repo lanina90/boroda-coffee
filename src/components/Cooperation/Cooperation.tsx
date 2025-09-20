@@ -17,7 +17,7 @@ const Cooperation = () => {
                     transition={{ duration: 0.8 }} className="flex flex-col items-center gap-4 px-6 py-7">
           <FaHandshake className="text-5xl " />
           <h2 className="text-2xl font-bold font-franklinGothicHeavy">
-            Співпраця
+            СПІВПРАЦЯ
           </h2>
           <p className="font-franklinGothicHeavy text-lg max-w-2xl">
             Ми готові до співпраці з магазинами та кав’ярнями за індивідуальними

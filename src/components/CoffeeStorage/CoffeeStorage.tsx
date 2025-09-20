@@ -15,7 +15,7 @@ const CoffeeStorage = () => {
             transition={{ duration: 0.8 }}
             className="p-8 rounded-2xl shadow-xl"
           >
-            <h2 className="text-3xl font-bold mb-6 ">Як зберігати каву в зернах</h2>
+            <h2 className="text-2xl font-bold mb-6 uppercase">Як зберігати каву в зернах</h2>
             <ul className="list-disc list-inside space-y-2 ">
               <li>Зберігайте каву в зіп-пакеті.</li>
               <li>Тримайте подалі від вологи, тепла та сонця.</li>
@@ -31,7 +31,7 @@ const CoffeeStorage = () => {
             transition={{ duration: 0.8 }}
             className="p-8 rounded-2xl shadow-xl h-full"
           >
-            <h2 className="text-3xl font-bold mb-6 ">Як зберігати мелену каву</h2>
+            <h2 className="text-2xl font-bold mb-6 uppercase">Як зберігати мелену каву</h2>
             <ul className="list-disc list-inside space-y-2 ">
               <li>Тримайте у щільно закритому зіп-пакеті.</li>
               <li>Використовуйте протягом 1–2 тижнів після відкриття.</li>

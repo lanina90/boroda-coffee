@@ -6,17 +6,17 @@ const FloatingContacts = () => {
     {
       icon: <FaPhone className="text-white text-xl" />,
       link: 'tel:+380673860038',
-      bg: 'bg-green-500',
+      bg: '#e7a727',
     },
     {
       icon: <FaTelegram className="text-white text-xl" />,
       link: 'https://t.me/kavaborodadrink',
-      bg: 'bg-blue-500',
+      bg: '#e7a727',
     },
     {
       icon: <FaInstagram className="text-white text-xl" />,
       link: 'https://www.instagram.com/boroda.drink/profilecard/?igsh=aXdxcGoxdDNzdGNl',
-      bg: 'bg-pink-500',
+      bg: '#e7a727',
     },
   ];
 
@@ -28,7 +28,7 @@ const FloatingContacts = () => {
           href={contact.link}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-12 h-12 flex items-center justify-center rounded-full shadow-lg ${contact.bg} transition transform hover:scale-110`}
+          className={`w-12 h-12 flex items-center justify-center rounded-full shadow-lg bg-[#e7a727] transition transform hover:scale-110`}
         >
           {contact.icon}
         </a>
